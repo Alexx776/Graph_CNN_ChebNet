@@ -46,7 +46,7 @@ Graph_CNN_ChebNet/
 ````
 ### 
 
-## Installer
+## Installation
 
 1. Clone this repository.
    ```sh
