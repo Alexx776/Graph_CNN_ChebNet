@@ -1,47 +1,64 @@
-# Projet de Master 2 TIDE : Graph CNN study with an emphasis on ChebNet 
+# Graph CNN study with an emphasis on ChebNet 
+#### Réalisé par : Legrosse Alexandre, Mobasso Guilhem et Lazizi Célia
 
-Utilisation de Convolution sur les Graphes
 Bienvenue dans le répertoire GitHub du projet de Master 2 TIDE, qui explore l'utilisation de convolutions sur les graphes. Ce projet se concentre sur la modélisation de données non euclidiennes, typiquement représentées sous forme de graphes.
 
-Nous nous intéressons particulièrement à ChebNet, une approche spectrale pour les réseaux de neurones convolutifs sur les graphes. Ce projet s'appuie sur l'article "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering" que vous pouvez consulter ici : https://arxiv.org/abs/1606.09375.
+Nous nous intéressons particulièrement à ChebNet, une approche spectrale qui utilise les filtres spectraux basés sur les polynômes de Chebyshev pour les réseaux de neurones convolutifs sur les graphes. Ce projet s'appuie sur l'article "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering" que vous pouvez consulter ici : [https://arxiv.org/abs/1606.09375].
 
 ## Objectifs de ce GitHub
-1) Reproduction des Résultats de l'Article : Reprendre le code fourni dans le GitHub de l'article pour reproduire les résultats obtenus sur des jeux de données comme MNIST et 20News.
+1) Reproduction des résultats de l'Article : Reprendre l'implémentation fournie dans le GitHub de l'article pour reproduire les résultats obtenus sur des jeux de données notamment 20News et RCV1.
+2) Nouveaux Cas d'Usage : Utilisation de ChebNet à partir de nouveaux travaux et d'autres données
 
+## Méthodologie 
 
-2) Nouveaux Cas d'Usage : Appliquer ChebNet à d'autres cas d'usage
+En premier lieu, nous avons utilisé l'implémentation des filtres spectraux basés sur les polynômes de Chebyshev disponible sur le GitHub de l'article : [https://github.com/mdeff/cnn_graph]. Une difficulté majeure a été l'initialisation du modèle avec TensorFlow 1.0, nécessitant une reprogrammation pour le porter sur TensorFlow 2.15. Bien que nous ayons conservé la structure de base, de nombreux changements de fonctions étaient nécessaires, ce qui a entraîné des différences dans les résultats obtenus. L'évolution entre TensorFlow 1.0 et 2.0 explique en partie ces variations. 
 
-## Contributions 
+Le modèle mis à jour pour TensorFlow 2.0 se trouve dans `Graph_CNN_ChebNet/lib/` et les résultats correspondants dans `Graph_CNN_ChebNet/Results_Tensorflow/`.
 
-L'une des grosses diffucltés que nous avons rencontrés est que les auteurs de "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering" ont initialement développé le modèle sur du TensorFlow version 1.0. Ce qui a été une grande diffucltés pour nous car il a fallut reprogrammer une grande partie du code sur du TensorFlow version 2.15. Ainsi la structure que nous avons utilisé est la même, il y a cependant beaucoup de changement sur les fonctions. C'est l'une des raisons que nous avons pas pu reproduire l'entière des résultats et également des résultats différents. Comme il y a une très grosse évolution entre la version de TensorFlow 1.0 et la version 2.0. 
+## Implémentation avec PyTorch Geometric
 
+Ensuite, nous avons utilisé l'implémentation de ChebNet fournie par `torch_geometric` : [https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.ChebConv.html]. Les résultats de ce modèle sont disponibles dans `Graph_CNN_ChebNet/Results_Pytorch/`.
 
 ## Structure du Répertoire GitHub
 
-Afin de faciliter la navigation et la compréhension de ce projet, voici une description détaillée de l'arborescence du répertoire :
+Voici une description de l'arborescence du répertoire :
 
 ````
 Graph_CNN_ChebNet/
 │
-├── model/ # Modèle de base utilisé dans l'article
+├── model/ # Implémentation officiel du GitHub de ChebNet
 │   ├── coarsening.py                  
 │   ├── graph.py
 │   ├── models.py 
 │   └── utils.py             
 │
-├── Results_Pytorch/
-│   ├── data_preprocessing.ipynb
-│   ├── model_training.ipynb     
-│   └── README.md                
-│
-├── Results_Tensorflow/
+├── Results_Pytorch/ # Résultats provenant de l'implémentation ChebNet
+│   ├── DeezerEurope.ipynb
+│   ├── MNISTSuperpixels.ipynb     
+│                 
+├── Results_Tensorflow/ # Résultats provenant de l'implémentation de l'article 
 │   ├── 20news.ipynb
 │   ├── mnist.ipynb 
+│   ├── rcv1.ipynb 
 │   └── usage.py
 │   
 ├── .gitignore              
 ├── requirements.txt          
 └── README.md            
 ````
-
 ### 
+
+## Installer
+
+1. Clone this repository.
+   ```sh
+   git clone https://github.com/Alexx776/Graph_CNN_ChebNet
+   cd Graph_CNN_ChebNet
+   ```
+
+2. Installer les dépendances. 
+   ```sh
+   pip install -r requirements.txt  
+   ```
+
+Remarque importante : Les résultats ne sont pas reproductibles à l'état au vu de la configuration du modèle, un update de ce repo est à envisager.
