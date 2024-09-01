@@ -15,9 +15,7 @@ En premier lieu, nous avons utilisé l'implémentation des filtres spectraux bas
 
 Le modèle mis à jour pour TensorFlow 2.0 se trouve dans `Graph_CNN_ChebNet/lib/` et les résultats correspondants dans `Graph_CNN_ChebNet/Results_Tensorflow/`.
 
-## Implémentation avec PyTorch Geometric
-
-Ensuite, nous avons utilisé l'implémentation de ChebNet fournie par `torch_geometric` : [https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.ChebConv.html]. Les résultats de ce modèle sont disponibles dans `Graph_CNN_ChebNet/Results_Pytorch/`.
+Dans un second temps, nous avons utilisé l'implémentation de ChebNet fournie par `torch_geometric` : [https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.ChebConv.html]. Les résultats de ce modèle sont disponibles dans `Graph_CNN_ChebNet/Results_Pytorch/`.
 
 ## Structure du Répertoire GitHub
 
