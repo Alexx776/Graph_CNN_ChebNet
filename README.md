@@ -7,7 +7,7 @@ Nous nous intéressons particulièrement à ChebNet, une approche spectrale qui 
 
 ## Objectifs de ce GitHub
 1) Reproduction des résultats de l'Article : Reprendre l'implémentation fournie dans le GitHub de l'article pour reproduire les résultats obtenus sur des jeux de données notamment 20News et RCV1.
-2) Nouveaux Cas d'Usage : Utilisation de ChebNet à partir de nouveaux travaux et d'autres données
+2) Utilisation des récents travaux avec l'utilisation de torch_geometric et des jeux de données DeezerEurope et MNISTSuperpixels. 
 
 ## Méthodologie 
 
